@@ -1,13 +1,9 @@
-# Arquivo: gerenciador.py
-
 import math
 import csv
 import os
 
-# Importa as classes de estrutura do outro arquivo
 from estrutura_de_dados import atributos_alunos, aplicador, Aprovado
 
-# As Constantes Globais 
 VAGAS_IA = 40
 VAGAS_ESG = 40
 CAPACIDADE_SALA = 30 
@@ -21,7 +17,6 @@ class gerenciador_alunos:
         self.id_esg = 3000
 
     def inscrição(self, nome, cpf, curso, boleto, silencioso=False):
-        # Validação de CPF duplicado
         p = self.vestibulando_inicio
         while p is not None:
             if p.cpf == cpf:
@@ -30,8 +25,6 @@ class gerenciador_alunos:
             p = p.next
 
         try:
-            # Tenta criar o aluno. Se nome, CPF ou curso for inválido,
-            # a classe atributos_alunos vai lançar um ValueError aqui.
             id_aluno = 0
             if curso.upper() == "IA": id_aluno = self.id_ia; self.id_ia += 1
             elif curso.upper() == "ESG": id_aluno = self.id_esg; self.id_esg += 1
@@ -49,7 +42,6 @@ class gerenciador_alunos:
                 print(f"-> Inscrição de {nome} (matrícula {id_aluno}) realizada com sucesso.")
         
         except ValueError as e:
-            # Captura o erro de validação e mostra uma mensagem amigável.
             if not silencioso:
                 print(f"[ERRO NA INSCRIÇÃO] Não foi possível inscrever '{nome}': {e}")
 

@@ -1,14 +1,9 @@
-# Arquivo: main.py
-
-# Importa a sua classe principal do arquivo gerenciador.py
 from gerenciador_do_sistema import gerenciador_alunos
 
 def menu_interativo():
-    # Cria o objeto principal que gerencia tudo
     sistema = gerenciador_alunos()
     print("Bem-vindo ao Sistema de Vestibular da FATEC Rio Claro!")
     
-    # Pergunta se o usuário quer carregar dados de um arquivo no início
     carregar = input("Deseja carregar dados do arquivo 'vestibulandos.csv'? (s/n): ").lower()
     if carregar == 's':
         sistema.carregar_vestibulandos_de_csv('vestibulandos.csv')
@@ -72,9 +67,7 @@ def menu_interativo():
                 print("[ERRO] Opção inválida, por favor tente novamente.")
         
         except Exception as e:
-            # Proteção para qualquer erro inesperado
             print(f"[ERRO INESPERADO] Ocorreu um problema: {e}")
 
-# --- Ponto de Entrada do Programa ---
 if __name__ == "__main__":
     menu_interativo()
